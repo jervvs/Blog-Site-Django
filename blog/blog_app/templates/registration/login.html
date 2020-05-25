@@ -1,4 +1,4 @@
-{% extends 'blog/base.html' %}
+{% extends 'blog_app/base.html' %}
 
 {% block content %}
 
@@ -10,12 +10,11 @@
   <p>Your username and password didn't match</p>
   {% endif %}
 
-  <form class="" action="{%%}" method="POST">
+  <form method="POST" action="{% url 'login'%}">
     {% csrf_token %}
-    {% form.as_p %}
+    {{form.as_p}}
     <input type="submit" class='btn btn-primary' value="Login">
     <input type="hidden" name="next" value="{{next}}">
-
   </form>
 
 </div>
