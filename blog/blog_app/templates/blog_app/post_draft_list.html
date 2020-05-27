@@ -2,12 +2,13 @@
 
 {% block content %}
 
-{% for post in posts %}
-<div class="post">
-  <p class = 'date'>Created: {{post.create_datex| date:;d-m-Y'}}</p>
+{% for post in drafts %}
+<div class="post container">
   <h1><a href="{% url 'blog_app:post_detail' pk=post.pk %}">{{post.title}}</a></h1>
-  <p>{{post.text|truncatechars:200}}</p>
+  <p class = 'date'>Created: {{post.create_date | date:"d-m-Y"}}</p>
+  <p>{{post.text|safe|linebreaksbr}}</p>
 </div>
+
 {% endfor %}
 
 {%endblock%}
